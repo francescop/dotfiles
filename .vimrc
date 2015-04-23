@@ -119,13 +119,16 @@ endif
 map <C-n> :NERDTreeToggle
 
 " Zencoding
-let g:user_zen_expandabbr_key='<C-e>'
+"let g:user_zen_expandabbr_key='<C-e>'
 let g:user_zen_settings = { 'erb': { 'extends': 'html' } }"
 
 " Color Scheme
 set t_Co=256
-color Tomorrow-Night
-"colorscheme railscasts
+"color Tomorrow-Night
+color molokai
+let g:molokai_original = 0
+let g:rehash256 = 1
+colorscheme Tomorrow-Night "railscasts
 
 hi Search term=reverse cterm=reverse gui=reverse ctermfg=237
 
