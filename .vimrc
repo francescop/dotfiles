@@ -45,6 +45,7 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'mattn/emmet-vim'
 
+Plugin 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
