@@ -2,8 +2,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent off
 
-set runtimepath+=$GOROOT/misc/vim
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -27,12 +25,10 @@ Plugin 'L9'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Bundle "chriskempson/tomorrow-theme", { "rtp": "vim/" }
 "Bundle 'antlypls/vim-colors-codeschool', { "rtp": "vim/" }
-Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/AutoClose'
 Plugin 'SirVer/ultisnips'
@@ -44,8 +40,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 
 Plugin 'mattn/emmet-vim'
-
-Plugin 'derekwyatt/vim-scala'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -144,12 +138,6 @@ set mouse=a
 
 let g:ctrlp_map = '<c-p>'
 
-" LANGUAGES SETTINGS
-" go
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
 
 "let g:UltiSnipsExpandTrigger="<c>"
 let g:airline#extensions#tabline#enabled = 1
