@@ -156,6 +156,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" search highligted text with double backslash
+vnoremap // y/<C-R>"<CR>"
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
     " Enable file type detection
