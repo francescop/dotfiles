@@ -38,7 +38,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
