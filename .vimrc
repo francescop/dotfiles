@@ -2,8 +2,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent off
 
-set runtimepath+=$GOROOT/misc/vim
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -27,12 +25,10 @@ Plugin 'L9'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Bundle "chriskempson/tomorrow-theme", { "rtp": "vim/" }
 "Bundle 'antlypls/vim-colors-codeschool', { "rtp": "vim/" }
-Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/AutoClose'
 Plugin 'SirVer/ultisnips'
@@ -42,7 +38,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'elixir-lang/vim-elixir'
 
@@ -143,12 +139,6 @@ set mouse=a
 
 let g:ctrlp_map = '<c-p>'
 
-" LANGUAGES SETTINGS
-" go
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
 
 "let g:UltiSnipsExpandTrigger="<c>"
 let g:airline#extensions#tabline#enabled = 1
@@ -167,6 +157,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" search highligted text with double backslash
+vnoremap // y/<C-R>"<CR>"
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
     " Enable file type detection
@@ -179,7 +172,7 @@ if has("autocmd")
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
