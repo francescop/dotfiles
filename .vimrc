@@ -44,8 +44,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 
 Plugin 'mattn/emmet-vim'
-
-Plugin 'derekwyatt/vim-scala'
+Plugin 'elixir-lang/vim-elixir'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
