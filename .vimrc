@@ -41,6 +41,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
