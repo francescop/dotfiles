@@ -73,6 +73,8 @@ set ic
 set smartcase
 set incsearch
 
+set conceallevel=0 " Show quotes in json, vim bug "
+
 set ruler " Show cursor position."
 
 " Higlhight search
@@ -168,6 +170,7 @@ if has("autocmd")
     " Syntax of these languages is fussy over tabs Vs spaces
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType rs setlocal ts=2 sts=2 sw=2 expandtab
 
     " Customisations based on house-style (arbitrary)
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
