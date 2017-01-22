@@ -41,6 +41,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'rust-lang/rust.vim'
+Plugin 'elmcast/elm-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,8 +73,6 @@ syntax on
 set ic
 set smartcase
 set incsearch
-
-set conceallevel=0 " Show quotes in json, vim bug "
 
 set ruler " Show cursor position."
 
@@ -140,7 +139,6 @@ set cursorline
 set mouse=a
 
 let g:ctrlp_map = '<c-p>'
-
 
 "let g:UltiSnipsExpandTrigger="<c>"
 let g:airline#extensions#tabline#enabled = 1
