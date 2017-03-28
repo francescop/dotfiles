@@ -69,6 +69,10 @@ set number
 " Set syntax on
 syntax on
 
+"
+au BufReadPost Jenkinsfile set syntax=groovy
+au BufReadPost Jenkinsfile set filetype=groovy
+
 " Case insensitive search
 set ic
 set smartcase
@@ -197,6 +201,8 @@ let g:UltiSnipsExpandTrigger="<c-d>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" elm-format
+let g:elm_format_autosave = 1
 
 " ctrl-p search on git tracked files
 let g:ctrlp_use_caching = 0
