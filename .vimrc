@@ -1,4 +1,6 @@
 set nocompatible              " be iMproved, required
+set encoding=utf-8
+
 filetype off                  " required
 filetype plugin indent off
 
@@ -42,6 +44,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'rust-lang/rust.vim'
 Plugin 'elmcast/elm-vim'
+Plugin 'racer-rust/vim-racer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -219,3 +222,8 @@ endif
 
 map <F2> :mksession! ./.vim_session <cr> " Quick write session with F2
 map <F3> :source ./.vim_session <cr>     " And load session with F3
+
+let g:rustfmt_autosave = 1
+
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
