@@ -189,3 +189,5 @@ assign [class="vlc"] 3
 
 exec --no-startup-id firefox start
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/fedora-workstation/aurora-over-iceland.png
+
+bindsym $mod+l exec "i3lock && xset dpms force off"
