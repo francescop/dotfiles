@@ -1,12 +1,2 @@
-# Ignore everything
-*
-
-# But not these files...
-!.gitignore
-!.vimrc
-!.vim/colors/molokai.vim
-!.style-readme
-!.tmux.conf
-!i3_config
-!README.md
-# etc...
+*.swp
+*.swo

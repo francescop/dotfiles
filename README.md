@@ -1,3 +1,12 @@
+# installation
+
+```bash
+./setup.sh
+```
+
 # i3
 
-Place it in `~/.config/i3/config`
+## requirements
+
+- `fontawesome-ttf` has to be installed. Icons from this [cheatsheet](https://fontawesome.com/cheatsheet)
+- link your favourite background to `/usr/share/backgrounds/default.png` 
