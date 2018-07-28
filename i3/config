@@ -234,7 +234,7 @@ for_window [class="calendar"] floating enable
 for_window [class="Gnome-calculator"] floating enable, resize set 640 480
 for_window [class="Blueman-manager"] floating enable, resize set 640 480
 
-set $mode_system    [L]OCK       LOG[O]UT       [S]USPEND       [R]EBOOT       [P]OWEROFF
+set $mode_system    [L]OCK       LOG[O]UT       [R]EBOOT       [S]HUTDOWN
 bindsym $mod+$alt+Delete mode "$mode_system"
 bindsym $mod+Ctrl+Delete mode "$mode_system"
 bindsym $mod+Delete mode "$mode_system"
@@ -243,9 +243,8 @@ bindsym Ctrl+$alt+Delete mode "$mode_system"
 mode "$mode_system" {
     bindsym l exec "i3lock --ignore-empty-password --show-failed-attempts && xset dpms force off"
     bindsym o exec "i3-msg exit"
-    bindsym s exec "i3lock --ignore-empty-password --show-failed-attempts && systemctl suspend"
     bindsym r exec "systemctl reboot"
-    bindsym p exec "systemctl poweroff"
+    bindsym s exec "systemctl poweroff"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
