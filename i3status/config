@@ -29,7 +29,7 @@ wireless _first_ {
 }
 
 ethernet _first_ {
-   format_up = " %ip (%speed)"
+    format_up = " %ip (%speed)"
     format_down = " down"
 }
 
@@ -60,7 +60,7 @@ cpu_usage {
 }
 
 disk "/" {
-    format = "  %avail %percentage_free"
+    format = "  %used %percentage_used"
     prefix_type = custom
     low_threshold = 15
     threshold_type = percentage_avail

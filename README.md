@@ -1,14 +1,49 @@
 # installation
 
+Edit `utils/turn_off_laptop_display.sh` to match your displays first.
+Run `xrands` to get a list of available displays.
+
 ```bash
 ./setup.sh
 ```
 
+# vim
+
+install phatogen
+cargo install racer
+
+```
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --all
+```
+
 # i3
+
+- put (or link) your desktop background image in `/usr/share/backgrounds/default.png`
 
 ## requirements
 
-- `fontawesome-ttf` has to be installed. Icons from this [cheatsheet](https://fontawesome.com/cheatsheet)
-- `scrot` and `gnome-screenshot` should be installed for taking screenshots
+```
+network-manager-applet
+blueman
+otf-font-awesome-4
+scrot
+gnome-screenshot
+gnome-calculator
+gnome-calendar
+```
+
 - configure `gnome-keyring` to start via PAM_method following [this guide](https://wiki.archlinux.org/index.php/GNOME/Keyring#PAM_method)
 - `gnome-calculator` and `gnome-calendar`
+
+# tune
+
+disable bluetooth on startup:
+
+```
+gsettings set org.blueman.plugins.powermanager auto-power-on false
+```
+
+# refs
+
+- [ttf font awesome icons](https://fontawesome.com/cheatsheet)
