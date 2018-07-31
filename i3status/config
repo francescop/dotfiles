@@ -19,9 +19,9 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "load"
 order += "cpu_usage all"
-order += "tztime local"
 order += "volume master"
 order += "battery all"
+order += "tztime local"
 
 wireless _first_ {
     format_up = " %quality %essid %ip"
