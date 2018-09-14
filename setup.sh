@@ -13,3 +13,4 @@ cp $(pwd)/vim/colors/* $HOME/.vim/colors/ 2>/dev/null || :
 
 cp $(pwd)/utils/toggle_display.sh $HOME/bin/toggle_display.sh
 cp $(pwd)/utils/turn_off_laptop_display.sh $HOME/bin/turn_off_laptop_display.sh
+cp $(pwd)/radare/radare2rc $HOME/.radare2rc
