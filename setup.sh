@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xe
+
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 
 mkdir -p $HOME/.config/{i3,i3status} && \
@@ -16,3 +18,8 @@ cp $(pwd)/vim/colors/* $NVIM_CONFIG_DIR/colors/ 2>/dev/null || :
 #cp $(pwd)/utils/toggle_display.sh $HOME/bin/toggle_display.sh
 #cp $(pwd)/utils/turn_off_laptop_display.sh $HOME/bin/turn_off_laptop_display.sh
 cp $(pwd)/radare/radare2rc $HOME/.radare2rc
+
+# gnome-terminal
+
+terminal_profile_id=$(dconf dump /org/gnome/terminal/legacy/profiles:/ | head -n 1 | sed 's/\[//g;s/\]//g')
+dconf load /org/gnome/terminal/legacy/profiles:/$terminal_profile_id/ < gnome/terminal_profile.dconf

@@ -1,0 +1,7 @@
+[/]
+login-shell=true
+use-theme-colors=false
+use-custom-command=true
+use-system-font=false
+custom-command='tmux'
+font='Ubuntu Mono 11'
