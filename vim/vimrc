@@ -4,37 +4,46 @@ set encoding=utf-8
 filetype off                  " required
 filetype plugin indent off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'jason0x43/vim-js-indent'
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"Bund "chriskempson/tomorrow-theme", { "rtp": "vim/" }
+Plug 'vim-scripts/AutoClose'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'rust-lang/rust.vim'
+Plug 'elmcast/elm-vim'
+Plug 'racer-rust/vim-racer'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Bundle "chriskempson/tomorrow-theme", { "rtp": "vim/" }
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/AutoClose'
-Plugin 'SirVer/ultisnips'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'Yggdroot/indentLine'
-Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'rust-lang/rust.vim'
-Plugin 'elmcast/elm-vim'
-Plugin 'racer-rust/vim-racer'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
+" All of your Plugins must be added before the following line
+call plug#end()            " required
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:deoplete#enable_at_startup = 1
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -133,7 +142,6 @@ set mouse=a
 
 let g:ctrlp_map = '<c-p>'
 
-"let g:UltiSnipsExpandTrigger="<c>"
 let g:airline#extensions#tabline#enabled = 1
 
 " disable arrow keys
