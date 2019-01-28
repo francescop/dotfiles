@@ -31,6 +31,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'rust-lang/rust.vim'
 Plugin 'elmcast/elm-vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -205,3 +206,13 @@ let g:rustfmt_autosave = 1
 
 set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
+
+setlocal indentkeys+=0
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
