@@ -1,21 +1,15 @@
 # installation
 
-Edit `utils/turn_off_laptop_display.sh` to match your displays first.
+Edit `i3scripts/turn_off_laptop_display.sh` to match your displays first.
 Run `xrands` to get a list of available displays.
 
 ```bash
 ./setup.sh
 ```
 
-# vim
+# nvim
 
-install phatogen
-cargo install racer
-
-```
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --all
-```
+Todo.
 
 # i3
 
@@ -31,6 +25,8 @@ scrot
 gnome-screenshot
 gnome-calculator
 gnome-calendar
+zenity
+i3blocks
 ```
 
 - configure `gnome-keyring` to start via PAM_method following [this guide](https://wiki.archlinux.org/index.php/GNOME/Keyring#PAM_method)
