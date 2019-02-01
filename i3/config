@@ -219,6 +219,7 @@ assign [class="vlc"] 3
 assign [class="sun-awt-X11-XFramePeer"] 6
 
 exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/gnome-terminal'
+exec --no-startup-id setxkbmap -layout "it,us" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id firefox
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/default.png
