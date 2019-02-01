@@ -19,7 +19,7 @@ font pango: Ubuntu Mono derivative Powerline, Ubuntu Mono, DejaVu Sans Mono, mon
 bar {
     font pango:DejaVu Sans Mono, Awesome, monospace 8
     position top
-    status_command i3status
+    status_command i3blocks
     colors {
         statusline $white
         focused_workspace $green $dark_blue $white
@@ -225,7 +225,7 @@ exec --no-startup-id feh --bg-scale /usr/share/backgrounds/default.png
 exec --no-startup-id numlockx on
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id blueman-applet
-exec --no-startup-id ~/bin/turn_off_laptop_display.sh
+exec --no-startup-id ~/.config/i3scripts/turn_off_laptop_display.sh
 
 bindsym $mod+l exec "i3lock && xset dpms force off"
 
