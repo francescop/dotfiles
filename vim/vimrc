@@ -27,7 +27,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'elixir-lang/vim-elixir'
@@ -144,7 +145,7 @@ set cursorline
 
 set mouse=a
 
-let g:ctrlp_map = '<c-p>'
+nnoremap <c-p> :FZF<cr>
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -229,11 +230,20 @@ endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_linters = {
+      \ 'javascript': ['eslint', 'vls', 'tsserver'],
+      \ 'vue': ['eslint', 'vls'],
+      \ 'ruby': ['rails_best_practices', 'rubocop']
+      \}
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\}
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'javascript': ['prettier', 'eslint'],
+      \   'css': ['prettier'],
+      \   'ruby': ['rubocop']
+      \}
+
 let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.vue Neoformat
