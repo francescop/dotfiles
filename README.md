@@ -27,6 +27,9 @@ gnome-calculator
 gnome-calendar
 zenity
 i3blocks
+yamllint
+pylint
+python-autopep8
 ```
 
 ```
