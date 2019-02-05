@@ -34,7 +34,7 @@ python-autopep8
 
 ```
 pip3 install --user pynvim
-yarn global add prettier eslin tsserver
+yarn global add prettier eslin tsserver jsonlint
 gem install rubocop
 ```
 
