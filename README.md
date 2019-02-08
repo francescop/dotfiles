@@ -27,6 +27,7 @@ gnome-calculator
 gnome-calendar
 zenity
 i3blocks
+redshift
 ```
 
 ```
