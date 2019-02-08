@@ -28,11 +28,14 @@ gnome-calendar
 zenity
 i3blocks
 redshift
+yamllint
+pylint
+python-autopep8
 ```
 
 ```
 pip3 install --user pynvim
-yarn global add prettier eslin tsserver
+yarn global add prettier eslint tsserver
 gem install rubocop
 ```
 

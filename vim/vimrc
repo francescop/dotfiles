@@ -66,7 +66,7 @@ let g:deoplete#enable_at_startup = 1
 
 set autoindent
 
-" Turn on line numbering. Turn it off with "set nonu" 
+" Turn on line numbering. Turn it off with "set nonu"
 set number
 
 " Set syntax on
@@ -233,13 +233,21 @@ let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'vls', 'tsserver'],
       \ 'vue': ['eslint', 'vls'],
-      \ 'ruby': ['rails_best_practices', 'rubocop']
+      \ 'ruby': ['rails_best_practices', 'rubocop'],
+      \ 'yaml': ['yamllint'],
+      \ 'python': ['pylint'],
+      \ 'sh': ['shellcheck'],
+      \ 'rust': ['cargo', 'rustc'],
+      \ 'lua': ['luac'],
       \}
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'javascript': ['prettier', 'eslint'],
       \   'css': ['prettier'],
-      \   'ruby': ['rubocop']
+      \   'ruby': ['rubocop'],
+      \   'yaml': ['prettier'],
+      \   'python': ['autopep8'],
+      \   'rust': ['rustfmt'],
       \}
 
 let g:ale_linters_explicit = 1
