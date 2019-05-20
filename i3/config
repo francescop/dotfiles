@@ -204,10 +204,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Control+Left workspace prev 
-bindsym $mod+Control+Right workspace next 
-bindsym $alt+Control+Left workspace prev 
-bindsym $alt+Control+Right workspace next 
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
+bindsym $alt+Control+Left workspace prev
+bindsym $alt+Control+Right workspace next
 
 bindsym $mod+Shift+Control+Left move to workspace prev; workspace prev
 bindsym $mod+Shift+Control+Right move to workspace next; workspace next
@@ -219,8 +219,9 @@ assign [class="vlc"] 3
 assign [class="sun-awt-X11-XFramePeer"] 6
 
 exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/gnome-terminal'
-exec --no-startup-id setxkbmap -layout "us,it" -variant "altgr-intl,basic" -option "grp:win_space_toggle"
+exec --no-startup-id setxkbmap -layout "it,us" -variant "basic,dvorak" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec --no-startup-id redshift -P -O 4400
 exec --no-startup-id firefox
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/default.png
 exec --no-startup-id numlockx on
