@@ -19,6 +19,11 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-scripts/AutoClose'
@@ -39,6 +44,7 @@ Plug 'w0rp/ale'
 Plug 'posva/vim-vue'
 Plug 'sbdchd/neoformat'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'calviken/vim-gdscript3'
 
 filetype plugin indent on    " required
 " All of your Plugins must be added before the following line
