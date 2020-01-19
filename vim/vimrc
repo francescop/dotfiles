@@ -136,8 +136,6 @@ let g:user_zen_settings = { 'erb': { 'extends': 'html' } }"
 " Color Scheme
 set t_Co=256
 "color Tomorrow-Night
-color molokai
-let g:molokai_original = 0
 let g:rehash256 = 1
 colorscheme Tomorrow-Night "railscasts
 
@@ -179,6 +177,7 @@ if has("autocmd")
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
 
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -223,7 +222,6 @@ map <F3> :source ./.vim_session <cr>     " And load session with F3
 
 let g:rustfmt_autosave = 1
 
-set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
 
 setlocal indentkeys+=0
@@ -236,6 +234,8 @@ if !exists("g:ycm_semantic_triggers")
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
+let g:ale_c_clangformat_options = '-style=WebKit'
+
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {
       \ 'json': ['jsonlint'],
@@ -247,6 +247,7 @@ let g:ale_linters = {
       \ 'sh': ['shellcheck'],
       \ 'rust': ['cargo', 'rustc'],
       \ 'lua': ['luac'],
+      \ 'cpp': ['ccls', 'clang', 'cppcheck', 'cpplint', 'cquery']
       \}
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -257,6 +258,7 @@ let g:ale_fixers = {
       \   'yaml': ['prettier'],
       \   'python': ['autopep8'],
       \   'rust': ['rustfmt'],
+      \   'cpp': ['clang-format', 'uncrustify']
       \}
 
 let g:ale_linters_explicit = 1
@@ -264,3 +266,10 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.vue Neoformat
+
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'cpp': ['clangd'],
+    \ }
