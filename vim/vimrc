@@ -52,6 +52,7 @@ call plug#end()            " required
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap fd <Esc>
 
 let g:deoplete#enable_at_startup = 1
 
