@@ -19,6 +19,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -45,6 +47,12 @@ Plug 'posva/vim-vue'
 Plug 'sbdchd/neoformat'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'calviken/vim-gdscript3'
+Plug 'rykka/riv.vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'ziglang/zig.vim'
+Plug 'lcolaholicl/vim-v'
+Plug 'baabelfish/nvim-nim'
 
 filetype plugin indent on    " required
 " All of your Plugins must be added before the following line
@@ -55,6 +63,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap fd <Esc>
 
 let g:deoplete#enable_at_startup = 1
+
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -111,21 +121,12 @@ set visualbell " No beeping.
 set shell=sh
 
 " UNCOMMENT TO USE
- set laststatus=2 " Show the status line all the time
- " Useful status information at bottom of screen
- set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\%)%P
- " NERDTree
- let NERDTreeShowHidden=0
- " CtrlP
- if executable('ag')
- " Use ag over grep
- set grepprg=ag\ --nogroup\ --nocolor
- " Use ag in CtrlP for listing files. Lightning fast and
- " respects .gitignore
- let g:ctrlp_user_command = 'ag -i %s -l --nocolor -g ""'
- " ag is fast enough that CtrlP doesn't need to cache
- let g:ctrlp_use_caching = 0
-endif
+set laststatus=2 " Show the status line all the time
+" Useful status information at bottom of screen
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\%)%P
+set statusline+=%{gutentags#statusline()}
+" NERDTree
+let NERDTreeShowHidden=0
 
 map <C-n> :NERDTreeToggle
 
@@ -151,6 +152,12 @@ set cursorline
 set mouse=a
 
 nnoremap <c-p> :FZF<cr>
+noremap <c-t> :Tags<cr>
+
+"start a search query by pressing \
+nnoremap \  :Ag<space>
+"search for word under cursor by pressing |
+nnoremap \| :Ag <C-R><C-W><cr>:cw<cr>
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -181,6 +188,10 @@ if has("autocmd")
 
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+    au BufReadPost *.rkt,*.rktl set filetype=racket
+    au filetype racket set lisp
+    au filetype racket set autoindent
 endif
 
 let NERDTreeShowHidden=1
@@ -206,6 +217,7 @@ let g:elm_format_autosave = 1
 
 " ctrl-p search on git tracked files
 let g:ctrlp_use_caching = 0
+
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
@@ -267,9 +279,18 @@ let g:ale_completion_enabled = 1
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.vue Neoformat
 
-
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ 'cpp': ['clangd'],
     \ }
+
+set directory=~/.vim/tmp
+
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords

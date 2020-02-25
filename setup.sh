@@ -11,7 +11,8 @@ mkdir -p $HOME/.config/{i3,i3blocks,i3scripts} && \
 
 mkdir -p $NVIM_CONFIG_DIR/colors && \
   ln $(pwd)/vim/vimrc $NVIM_CONFIG_DIR/init.vim && \
-  ln $(pwd)/tmux/tmux.conf $HOME/.tmux.conf
+  ln $(pwd)/tmux/tmux.conf $HOME/.tmux.conf \
+  ln $(pwd)/utils/alacritty.yml $HOME/.alacritty.yml
 
 # suppress error code and error message
 cp $(pwd)/vim/colors/* $NVIM_CONFIG_DIR/colors/ 2>/dev/null || :

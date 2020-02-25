@@ -219,15 +219,15 @@ assign [class="vlc"] 3
 assign [class="sun-awt-X11-XFramePeer"] 6
 
 exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/gnome-terminal'
-exec --no-startup-id setxkbmap -layout "it,us" -variant "basic,dvorak" -option "grp:win_space_toggle"
+exec --no-startup-id setxkbmap -layout "it,us" -variant "basic,basic" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec --no-startup-id redshift -P -O 4400
+exec --no-startup-id redshift -O 3400
 exec --no-startup-id firefox
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/default.png
 exec --no-startup-id numlockx on
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id blueman-applet
-exec --no-startup-id ~/.config/i3scripts/turn_off_laptop_display.sh
+#exec --no-startup-id ~/.config/i3scripts/turn_off_laptop_display.sh
 
 bindsym $mod+l exec "i3lock && xset dpms force off"
 
@@ -278,4 +278,4 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # toggle display fn key
-bindsym XF86Display exec --no-startup-id ~/bin/toggle_display.sh
+#bindsym XF86Display exec --no-startup-id ~/bin/toggle_display.sh

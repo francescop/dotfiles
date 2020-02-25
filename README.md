@@ -31,12 +31,30 @@ redshift
 yamllint
 pylint
 python-autopep8
+clang
+clang-format
+clangd
+silversearch-ag
+fish
+alacritty
 ```
 
 ```
 pip3 install --user pynvim
-yarn global add prettier eslin tsserver jsonlint
+yarn global add prettier eslint ts-server jsonlint
 gem install rubocop
+```
+
+# rust
+
+```
+rustup toolchain install stable
+rustup toolchain install nightly
+rustup default stable
+rustup component add rust-src
+rustup component add rls --toolchain nightly
+cargo +nightly install racer
+rustup component add rls-preview rust-analysis rust-src
 ```
 
 - configure `gnome-keyring` to start via PAM_method following [this guide](https://wiki.archlinux.org/index.php/GNOME/Keyring#PAM_method)
