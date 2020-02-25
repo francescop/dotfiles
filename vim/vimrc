@@ -41,7 +41,7 @@ Plug 'mattn/emmet-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
 Plug 'elmcast/elm-vim'
-Plug 'racer-rust/vim-racer'
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'w0rp/ale'
 Plug 'posva/vim-vue'
 Plug 'sbdchd/neoformat'
@@ -53,6 +53,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'ziglang/zig.vim'
 Plug 'lcolaholicl/vim-v'
 Plug 'baabelfish/nvim-nim'
+Plug 'cespare/vim-toml'
 
 filetype plugin indent on    " required
 " All of your Plugins must be added before the following line
@@ -63,6 +64,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap fd <Esc>
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources = {'rust': ['ale', 'racer']}
 
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 
@@ -185,6 +187,7 @@ if has("autocmd")
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType h setlocal ts=4 sts=4 sw=4 expandtab
 
     " Treat .rss files as XML
     autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -232,9 +235,20 @@ endif
 map <F2> :mksession! ./.vim_session <cr> " Quick write session with F2
 map <F3> :source ./.vim_session <cr>     " And load session with F3
 
-let g:rustfmt_autosave = 1
-
 let g:racer_cmd = "~/.cargo/bin/racer"
+
+if executable('racer')
+autocmd User asyncomplete_setup call asyncomplete#register_source(
+    \ asyncomplete#sources#racer#get_source_options())
+endif
+
+if executable("rls")
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': { server_info->['rls']},
+        \ 'whitelist': ['rust'],
+    \ })
+endif
 
 setlocal indentkeys+=0
 
@@ -257,22 +271,27 @@ let g:ale_linters = {
       \ 'yaml': ['yamllint'],
       \ 'python': ['pylint'],
       \ 'sh': ['shellcheck'],
-      \ 'rust': ['cargo', 'rustc'],
       \ 'lua': ['luac'],
-      \ 'cpp': ['ccls', 'clang', 'cppcheck', 'cpplint', 'cquery']
+      \ 'cpp': ['ccls', 'clang', 'cppcheck', 'cpplint', 'cquery'],
+      \ 'h': ['ccls', 'clang', 'cppcheck', 'cpplint', 'cquery'],
       \}
+      "\ 'rust': ['rls'],
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'rust': ['rustfmt'],
       \   'json': ['prettier'],
       \   'javascript': ['prettier', 'eslint'],
       \   'css': ['prettier'],
       \   'ruby': ['rubocop'],
       \   'yaml': ['prettier'],
       \   'python': ['autopep8'],
-      \   'rust': ['rustfmt'],
-      \   'cpp': ['clang-format', 'uncrustify']
+      \   'cpp': ['clang-format', 'uncrustify'],
+      \   'h': ['clang-format', 'uncrustify'],
       \}
 
+let g:rustfmt_autosave = 1
+
+let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -280,7 +299,20 @@ autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.vue Neoformat
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ 'cpp': ['clangd'],
+    \ 'h': ['clangd'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_hasSnippetSupport = 1
+
+set directory=~/.vim/tmp
+
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
