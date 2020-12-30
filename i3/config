@@ -12,12 +12,12 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango: Ubuntu Mono derivative Powerline, Ubuntu Mono, DejaVu Sans Mono, monospace 8
+font pango: Ubuntu Mono derivative Powerline, Ubuntu Mono, DejaVu Sans Mono, monospace 7
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:DejaVu Sans Mono, Awesome, monospace 8
+    font pango:DejaVu Sans Mono, Awesome, monospace 7
     position top
     status_command i3status
     colors {
@@ -28,7 +28,6 @@ bar {
         urgent_workspace $red $red $white
     }
 }
-
 
 # colors
 set $black 	           #272822
@@ -54,7 +53,7 @@ client.background       #ff0000
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -215,18 +214,16 @@ bindsym $alt+Shift+Control+Left move to workspace prev; workspace prev
 bindsym $alt+Shift+Control+Right move to workspace next; workspace next
 
 assign [class="Firefox"] 1
-assign [class="vlc"] 3
 assign [class="sun-awt-X11-XFramePeer"] 6
 
-exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/alacritty'
 exec --no-startup-id setxkbmap -layout "it,us" -variant "basic,basic" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec --no-startup-id redshift -O 3400
+exec --no-startup-id redshift -O 2500
 exec --no-startup-id firefox
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/default.png
 exec --no-startup-id numlockx on
 exec --no-startup-id nm-applet --sm-disable
-exec --no-startup-id blueman-applet
 #exec --no-startup-id ~/.config/i3scripts/turn_off_laptop_display.sh
 
 bindsym $mod+l exec "i3lock && xset dpms force off"
@@ -268,10 +265,10 @@ bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p /
 bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p /tmp/screenshots && mv $f /tmp/screenshots && xclip -selection clipboard -t image/png -i /tmp/screenshots/`ls -1 -t /tmp/screenshots | head -1`' # Area selection
 
 # Media volume controls
-bindsym XF86AudioMute exec amixer sset 'Master' toggle
+bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
-bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
