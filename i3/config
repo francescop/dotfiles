@@ -53,7 +53,7 @@ client.background       #ff0000
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec rxvt-unicode -e tmux -u -2
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -216,7 +216,7 @@ bindsym $alt+Shift+Control+Right move to workspace next; workspace next
 assign [class="Firefox"] 1
 assign [class="sun-awt-X11-XFramePeer"] 6
 
-exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/alacritty'
+exec --no-startup-id i3-msg 'workspace 2:terminal; exec /usr/bin/rxvt-unicode -e tmux -u -2'
 exec --no-startup-id setxkbmap -layout "it,us" -variant "basic,basic" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id redshift -O 2500
